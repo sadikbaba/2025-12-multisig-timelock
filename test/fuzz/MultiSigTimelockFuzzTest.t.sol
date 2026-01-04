@@ -6,7 +6,6 @@ import {MultiSigTimelock} from "src/MultiSigTimelock.sol";
 import {EthRejector} from "test/utils/EthRejector.sol";
 import {TestTimelockDelay} from "test/utils/TestTimelockDelay.sol";
 
-
 /**
  * @title
  * @author
@@ -23,7 +22,6 @@ contract MultiSigTimeLockFuzzTest is Test {
     address public SIGNER_FOUR = makeAddr("signer_four");
     address public SIGNER_FIVE = makeAddr("signer_five");
 
-
     function setUp() public {
         multiSigTimelock = new MultiSigTimelock();
     }
@@ -38,7 +36,7 @@ contract MultiSigTimeLockFuzzTest is Test {
 
     function testFuzz_GetTimelockDelay(uint256 value) public {
         testTimelockDelay = new TestTimelockDelay();
-        uint256 delay = testTimelockDelay.getTimelockDelay(value); 
+        uint256 delay = testTimelockDelay.getTimelockDelay(value);
 
         if (value < 1 ether) {
             assertEq(delay, 0);
@@ -71,5 +69,4 @@ contract MultiSigTimeLockFuzzTest is Test {
     //     // Invariant: Never exceed max signers
     //     assertLe(multiSigTimelock.getSignerCount(), multiSigTimelock.getMaximumSignerCount());
     // }
-
 }
